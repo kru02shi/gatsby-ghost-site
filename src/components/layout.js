@@ -4,19 +4,20 @@ import { Link } from "gatsby"
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
+  
   let header
 
   if (isRootPath) {
     header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
+        <h1 className="main-heading">
+            <Link to="/">{title}</Link>
+        </h1>
     )
   } else {
     header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
+        <h2 className="header-link-home">
+            <Link to="/">{title}</Link>
+        </h2>
     )
   }
 
@@ -27,7 +28,7 @@ const Layout = ({ location, title, children }) => {
       <footer>
         © {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <a href="https://www.gatsbyjs.com">Us...!!</a>
       </footer>
     </div>
   )

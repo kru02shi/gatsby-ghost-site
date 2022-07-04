@@ -1,23 +1,21 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-
-  // Get all markdown blog posts sorted by date
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
-        ) {
-          nodes {
-            id
-            fields {
+        allGhostPost(sort: { order: ASC, fields: published_at }) {
+            edges {
+                node {
+                    slug
+                }
+            }
+        }
+        allGhostPage(sort: { order: ASC, fields: published_at }) {
+          edges {
+            node {
               slug
             }
           }
@@ -27,37 +25,50 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   )
 
   if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      result.errors
-    )
-    return
+    throw new Error(result.errors)
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  // Extract query results
+  const posts = result.data.allGhostPost.edges
+  // Load templates
+  const postTemplate = path.resolve(`./src/templates/blog-post.js`)
 
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
+  const pages = result.data.allGhostPage.edges
+  const pageTemplate = path.resolve(`./src/templates/page.js`)
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-
-      createPage({
-        path: post.fields.slug,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
+  // Create post pages
+    posts.forEach(({ node }) => {
+        // This part here defines, that our posts will use
+        // a `/:slug/` permalink.
+        node.url = `/${node.slug}/`
+        createPage({
+            path: node.url,
+            component: postTemplate,
+            context: {
+                // Data passed to context is available
+                // in page queries as GraphQL variables.
+                slug: node.slug,
+            },
+        })
     })
-  }
-}
 
+    // Create new pages
+    pages.forEach(({ node }) => {
+      // This part here defines, that our posts will use
+      // a `/:slug/` permalink.
+      node.url = `/${node.slug}/`
+      createPage({
+          path: node.url,
+          component: pageTemplate,
+          context: {
+              // Data passed to context is available
+              // in page queries as GraphQL variables.
+              slug: node.slug,
+          },
+      })
+  })
+}
+/*
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
@@ -112,4 +123,4 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
     }
   `)
-}
+}*/

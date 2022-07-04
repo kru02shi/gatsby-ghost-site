@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "my-site-2",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Ria sants",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
@@ -23,6 +23,7 @@
     "gatsby-remark-responsive-iframe": "^5.17.0",
     "gatsby-remark-smartypants": "^5.17.0",
     "gatsby-source-filesystem": "^4.17.0",
+    "gatsby-source-ghost": "^5.0.0",
     "gatsby-transformer-remark": "^5.17.0",
     "gatsby-transformer-sharp": "^4.17.0",
     "prismjs": "^1.28.0",
