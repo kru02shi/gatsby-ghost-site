@@ -24,9 +24,8 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <ul className="navStyle">
+      <ul className="naviStyle">
         {navPages.map(navPage => {
-
             return (
               <li key={navPage.node.slug}>
                     <h2>
@@ -48,7 +47,7 @@ const BlogIndex = ({ data, location }) => {
                 itemScope
                 itemType="http://schema.org/Article"
               >
-                <header>
+                <header className="header-post">
                   <h2>
                     <Link to={post.node.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>

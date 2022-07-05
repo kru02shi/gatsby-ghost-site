@@ -10,7 +10,7 @@
   --maxWidth-2xl: 42rem;
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
-  --maxWidth-5xl: 63rem;
+  --maxWidth-5xl: 62rem;
   --maxWidth-6xl: 70rem;
   --maxWidth-full: "100%";
   --maxWidth-wrapper: var(--maxWidth-5xl);
@@ -171,6 +171,7 @@ p {
 
 ul,
 ol {
+  margin-top: 0%;
   margin-left: var(--spacing-0);
   margin-right: var(--spacing-0);
   padding: var(--spacing-0);
@@ -244,7 +245,7 @@ a:focus {
 
 .global-wrapper {
   margin: var(--spacing-0) auto;
-  max-width: var(--maxWidth-wrapper);
+  max-width: 100%;
   padding: 2rem 2rem;
 }
 
@@ -254,21 +255,36 @@ a:focus {
 
 .global-header {
   margin-bottom: var(--spacing-2);
-  background-color: #ff5f94;
+  background-image: url(../src/images/view.jpg);
+  background-repeat: no-repeat;
   padding: var(--spacing-10);
   border: 0px;
+  background-size: 100%;
 }
 
 .main-heading {
+  font-weight: var(--fontWeight-bold);
   font-size: var(--fontSize-7);
-  margin: 0;
+  text-decoration: none;
   color: #fff;
   text-align: center;
+  margin-bottom: 0%;
+}
+
+.header-link-home {
+  font-weight: var(--fontWeight-bold);
+  font-family: var(--font-heading);
+  text-decoration: none;
+  color: #fff;
+  margin-top: 0%;
 }
 
 .post-list-item {
   margin-bottom: var(--spacing-8);
   margin-top: var(--spacing-8);
+  align-self: center;
+  margin-left: 12rem;
+  margin-right: 12rem;
 }
 
 .post-list-item p {
@@ -286,16 +302,6 @@ a:focus {
   margin-bottom: var(--spacing-4);
   margin-left: 20px;
   margin-right: 20px;
-}
-
-.header-link-home {
-  font-weight: var(--fontWeight-bold);
-  font-family: var(--font-heading);
-  text-decoration: none;
-  font-size: var(--fontSize-7);
-  color: #fff;
-  margin-top: 0%;
-  margin-bottom: 0%;
 }
 
 .bio {
@@ -441,7 +447,7 @@ a:focus {
   border-radius: 12px;
 }
 
-ul.navStyle {
+ul.naviStyle {
   margin-bottom: var(--spacing-0);
   margin-top: 0%;
   margin-left: 15px;
@@ -450,12 +456,14 @@ ul.navStyle {
   padding-right: 10px;
   background-color: #ff5f94;
   border: 0px;
+  color: #fff;
+  background-size: 50%;
 }
 
-ul.navStyle li {
+ul.naviStyle li {
   display: inline-block;
   padding: 0 1rem 0 2rem;
-  font-size: var(--fontSize-2);
+  font-size: var(--fontSize-0);
   margin-bottom: var(--spacing-4);
   margin-top: 0%;
   color: #fff;
@@ -464,4 +472,9 @@ ul.navStyle li {
 .para {
   margin-left: 25px;
   margin-right: 25px;
+  max-width: var(--maxWidth-4xl);
+}
+
+.header-post {
+  max-width: var(--maxWidth-4xl);
 }
