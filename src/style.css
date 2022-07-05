@@ -10,9 +10,10 @@
   --maxWidth-2xl: 42rem;
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
-  --maxWidth-5xl: 70rem;
+  --maxWidth-5xl: 63rem;
+  --maxWidth-6xl: 70rem;
   --maxWidth-full: "100%";
-  --maxWidth-wrapper: var(--maxWidth-4xl);
+  --maxWidth-wrapper: var(--maxWidth-5xl);
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -255,11 +256,14 @@ a:focus {
   margin-bottom: var(--spacing-2);
   background-color: #ff5f94;
   padding: var(--spacing-10);
+  border: 0px;
 }
 
 .main-heading {
   font-size: var(--fontSize-7);
   margin: 0;
+  color: #fff;
+  text-align: center;
 }
 
 .post-list-item {
@@ -289,6 +293,9 @@ a:focus {
   font-family: var(--font-heading);
   text-decoration: none;
   font-size: var(--fontSize-7);
+  color: #fff;
+  margin-top: 0%;
+  margin-bottom: 0%;
 }
 
 .bio {
@@ -436,9 +443,13 @@ a:focus {
 
 ul.navStyle {
   margin-bottom: var(--spacing-0);
-  margin-top: var(--spacing-0);
+  margin-top: 0%;
   margin-left: 15px;
   margin-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ff5f94;
+  border: 0px;
 }
 
 ul.navStyle li {
@@ -446,7 +457,8 @@ ul.navStyle li {
   padding: 0 1rem 0 2rem;
   font-size: var(--fontSize-2);
   margin-bottom: var(--spacing-4);
-  margin-top: var(--spacing-0)
+  margin-top: 0%;
+  color: #fff;
 }
 
 .para {
